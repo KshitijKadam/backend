@@ -10,7 +10,9 @@ phases:
   post_build:
     commands:
       - echo Build completed
-    artifact: mysource.zip
+artifacts:
+  files:
+    - '**/*'
 #artifacts:
 #  files:
 #    - build/libs/*.war
