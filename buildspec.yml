@@ -1,14 +1,18 @@
-version: 0.1
+version: 0.2
 
 phases:
   install:
-    commands:
-      - echo Entering install phase...
-      - echo Nothing to do now
+    runtime-versions:
+      java: corretto17
   build:
     commands:
       - gradle build
+  post_build:
+    commands:
+      - echo Build completed
 artifacts:
-  type: zip
   files:
     - 'build/libs/*.war'
+    - scripts/*.sh
+    - appspec.yml
+  discard-paths: yes
