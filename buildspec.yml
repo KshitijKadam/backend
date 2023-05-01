@@ -22,19 +22,43 @@
 ##  deploy:
 ##    artifact: mysource.zip
 
-version: 0.2
+#version: 0.2
+#phases:
+#  install:
+#    runtime-versions:
+#      java: corretto17
+#  build:
+#    commands:
+#      - echo Packaging WAR file...
+#      - gradle clean
+#  post_build:
+#    commands:
+#      - echo Build complete.
+#artifacts:
+#  files:
+#    - build/libs/MyApp.jar
+#  discard-paths: yes
+
+version: 0.1
 phases:
   install:
-    runtime-versions:
-      java: corretto17
+    run-as: root
+    commands:
+      - echo Installing gradle
+      - wget https://services.gradle.org/distributions/gradle-7.1.1-bin.zip
+      - unzip -d /opt/gradle gradle-7.1.1-bin.zip
+  pre_build:
+    commands:
+      - echo Entering pre build
   build:
     commands:
-      - echo Packaging WAR file...
-      - gradle clean
+      - /opt/gradle/gradle-7.1.1/bin/gradle clean
+      - /opt/gradle/gradle-7.1.1/bin/gradle explodedWar
   post_build:
     commands:
-      - echo Build complete.
+      - echo Entering post build
 artifacts:
   files:
-    - build/libs/MyApp.jar
-  discard-paths: yes
+    - '**/*'
+  base-directory: build/
+  discard-paths: no

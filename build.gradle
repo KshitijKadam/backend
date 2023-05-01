@@ -47,3 +47,7 @@ tasks {
         archiveFileName.set("MyApp.war")
     }
 }
+
+task explodedWar(type: Sync) {
+    into "${buildDir}"
+    with war }
