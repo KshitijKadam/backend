@@ -17,4 +17,4 @@ phases:
 #    - appspec.yml
 #  discard-paths: yes
   deploy:
-    artifact: my_source_bundle.zip
+    artifact: mysource.zip
