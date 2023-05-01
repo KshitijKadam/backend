@@ -10,11 +10,12 @@ phases:
   post_build:
     commands:
       - echo Build completed
+    artifact: mysource.zip
 #artifacts:
 #  files:
 #    - build/libs/*.war
 #    - scripts/*.sh
 #    - appspec.yml
 #  discard-paths: yes
-  deploy:
-    artifact: mysource.zip
+#  deploy:
+#    artifact: mysource.zip
