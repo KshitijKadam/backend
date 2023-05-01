@@ -1,23 +1,37 @@
-version: 0.2
-
-phases:
-  install:
-    runtime-versions:
-      java: corretto17
-  build:
-    commands:
-      - gradle build
-  post_build:
-    commands:
-      - echo Build completed
-artifacts:
-  files:
-    - '**/*'
+#version: 0.2
+#
+#phases:
+#  install:
+#    runtime-versions:
+#      java: corretto17
+#  build:
+#    commands:
+#      - gradle build
+#  post_build:
+#    commands:
+#      - echo Build completed
 #artifacts:
 #  files:
-#    - build/libs/*.war
-#    - scripts/*.sh
-#    - appspec.yml
-#  discard-paths: yes
-#  deploy:
-#    artifact: mysource.zip
+#    - '**/*'
+##artifacts:
+##  files:
+##    - build/libs/*.war
+##    - scripts/*.sh
+##    - appspec.yml
+##  discard-paths: yes
+##  deploy:
+##    artifact: mysource.zip
+
+version: 0.2
+phases:
+  build:
+    commands:
+      - echo Packaging WAR file...
+      - gradle clean
+  post_build:
+    commands:
+      - echo Build complete.
+artifacts:
+  files:
+    - build/libs/MyApp.jar
+  discard-paths: yes
