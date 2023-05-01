@@ -15,4 +15,12 @@ artifacts:
     - build/libs/*.war
     - scripts/*.sh
     - appspec.yml
+  source.zip:
+    -.ebextensions
+    -https-instance-single.config
+    -https-instance.config
+    -.platform
+    -nginx/conf.d/https.conf
+    -web-inf/
+    -app.war
   discard-paths: yes
